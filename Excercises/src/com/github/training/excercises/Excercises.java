@@ -10,6 +10,7 @@ public class Excercises {
 		
 		example();
 		esercizio1();
+		example2();
 		
 	}
 	
@@ -46,5 +47,9 @@ public class Excercises {
 	
 	private static void esercizio1() {
 		//TODO 
+	}
+	
+	private static void example2() {
+		System.out.println("Codice Branch Usama");
 	}
 }
