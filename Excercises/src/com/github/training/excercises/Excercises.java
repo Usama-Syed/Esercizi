@@ -14,7 +14,8 @@ public class Excercises {
 		//esercizio3();
 		//esercizio4();
 		//esercizio5();
-		esercizio6();
+		//esercizio6();
+		esercizio7();
 	}
 	
 	private static void example() {
@@ -143,7 +144,56 @@ public class Excercises {
 	}
 
 	private static void esercizio6() {
+		//Esercizio 6:
+		//Dato un numero X in input, stampare "X E' UN NUMERO PRIMO" in caso sia un numero primo, "X NON E' UN NUMERO PRIMO" in caso contrario.
+
+		Scanner input = new Scanner(System.in);
+		int number;
+		String result = null;
+
+		System.out.print("Inserire numero ");
+		number = input.nextInt();
+		input.close();
+
+		for(int i = 2; i < number; i++) {
+			if (number % i == 0) {
+				result = "Il numero " + number + " non è primo";
+			}
+		}
+		if(result == null) {
+			result = "Il numero " + number + " è primo";
+		}
+
+		System.out.print(result);
+
+	}
+	
+	private static void esercizio7() {
+		//Esercizio 7:
+		//Dato un array di numeri, calcolare:
+			//1)il valore medio delle posizioni pari e di quelle dispari;
+			//2)sostituire con -1 tutti i valori inferiori al valore medio complessivo, 1 i valori superirori alle media e con 0 i valori uguali alle media;
+			//3)stampare per ciasuno elemento dell'array "SCARTATO" se vale 0, "VALIDO" se vale 1, "INVALIDO" se vale -1.
 		
+		int[] number = new int[] {5,10,20,25,18,30};
+		float medPari = 0f; //float o double lo si utilizza per le medie, essendo un tipo decimale.
+		float medDispari = 0f;
+		float totalePari = 0f;
+		float totaleDispari = 0f;
+		
+		for(int i = 0; i < number.length; i++) {
+			if(i % 2 == 0) {
+				totalePari = totalePari + number[i];
+			} else {
+				totaleDispari = totaleDispari + number[i];
+			}
+		}
+		medPari = totalePari / (number.length / 2);
+		medDispari = totaleDispari / (number.length / 2);
+		
+		System.out.println("La media pari è: " + medPari);
+		System.out.println("La media dispari è: " + medDispari);
+
 	}
 }
 
