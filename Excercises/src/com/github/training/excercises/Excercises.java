@@ -180,6 +180,9 @@ public class Excercises {
 		float medDispari = 0f;
 		float totalePari = 0f;
 		float totaleDispari = 0f;
+		float media = 0f;
+		int valoreVecchio;
+		String esito;
 		
 		for(int i = 0; i < number.length; i++) {
 			if(i % 2 == 0) {
@@ -193,6 +196,32 @@ public class Excercises {
 		
 		System.out.println("La media pari è: " + medPari);
 		System.out.println("La media dispari è: " + medDispari);
+		
+		//il totale degli elementi contenuti, diviso la lunghezza.
+		
+		media = (totalePari + totaleDispari) / number.length;
+		
+		
+		for(int i = 0; i < number.length; i++) {
+			
+			valoreVecchio = number[i];
+			
+			if(number[i] < media) {
+				number[i] = -1;
+				esito = " Invalido ";
+			}else if(number[i] > media){
+				number[i] = 1;
+				esito = " Valido ";
+			} else{
+				number[i] = 0;
+				esito = " Scartato ";
+			}
+			
+			System.out.println(valoreVecchio + " è" + esito + number[i] );
+
+		}
+	
+		System.out.print("La media totale è: " + media);
 
 	}
 }
