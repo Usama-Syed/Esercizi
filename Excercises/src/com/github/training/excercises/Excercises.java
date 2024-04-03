@@ -200,7 +200,8 @@ public class Excercises {
 		//il totale degli elementi contenuti, diviso la lunghezza.
 		
 		media = (totalePari + totaleDispari) / number.length;
-		
+		System.out.print("La media totale è: " + media + "\n");
+		System.out.print("OLD \t ESITO \t  \t NEW \n");
 		
 		for(int i = 0; i < number.length; i++) {
 			
@@ -208,20 +209,20 @@ public class Excercises {
 			
 			if(number[i] < media) {
 				number[i] = -1;
-				esito = " Invalido ";
+				esito = "Invalido";
 			}else if(number[i] > media){
 				number[i] = 1;
-				esito = " Valido ";
+				esito = "Valido \t ";
 			} else{
 				number[i] = 0;
-				esito = " Scartato ";
+				esito = "Scartato";
 			}
 			
-			System.out.println(valoreVecchio + " è" + esito + number[i] );
+			
+			System.out.println(valoreVecchio + "\t" + esito + "\t" + number[i]  );
 
 		}
 	
-		System.out.print("La media totale è: " + media);
 
 	}
 }
