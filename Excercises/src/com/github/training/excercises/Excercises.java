@@ -15,7 +15,8 @@ public class Excercises {
 		//esercizio4();
 		//esercizio5();
 		//esercizio6();
-		esercizio7();
+		//esercizio7();
+		esercizio8();
 	}
 	
 	private static void example() {
@@ -169,6 +170,7 @@ public class Excercises {
 	}
 	
 	private static void esercizio7() {
+
 		//Esercizio 7:
 		//Dato un array di numeri, calcolare:
 			//1)il valore medio delle posizioni pari e di quelle dispari;
@@ -224,6 +226,30 @@ public class Excercises {
 		}
 	
 
+	}
+
+	private static void esercizio8() {
+		
+		//Esercizio 1:
+		//Dati in input un numero e un carattere, stampare la temperatura nell'altra unità di misura rispetto al carattere fornito.
+		//Se il valore del carattere è "C" si intendono gradi Celsius, mentre la lettera se vale "F" indica gradi Farenhit;  in caso di valore differente, stampare input non valido.
+		//TIP: Conversion formulas: °F = °C * 1.8 + 32				 °C = (°F - 32) / 1.8
+		
+		Scanner input = new Scanner(System.in);
+		Scanner input2 = new Scanner(System.in);
+		int gradi;
+		String unitaDiMisura;
+		String temperatura;
+		
+		System.out.print("Inserire il grado: ");
+		gradi = input.nextInt();
+		System.out.print("Inserire l'unita di misura: °");
+		unitaDiMisura = input.next();
+		input.close();
+		
+		System.out.print(gradi + " " + " ° " + unitaDiMisura);
+		
+		
 	}
 }
 
