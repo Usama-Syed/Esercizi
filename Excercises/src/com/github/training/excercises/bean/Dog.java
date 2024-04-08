@@ -1,5 +1,5 @@
 package com.github.training.excercises.bean;
 
-public class Cane {
+public class Dog {
 
 }
