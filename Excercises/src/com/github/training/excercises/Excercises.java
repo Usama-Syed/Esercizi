@@ -14,7 +14,8 @@ public class Excercises {
 		callListMethods();
 		
 	}
-
+	
+	
 	private static void example() {
 		Scanner input = new Scanner(System.in);
 		int number = 0;
