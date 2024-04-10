@@ -3,16 +3,18 @@ package com.github.training.excercises;
 import java.util.Scanner;
 
 import com.github.training.excercises.bean.Dog;
+import com.github.training.excercises.service.EserciziService;
 
 public class Excercises {
 
 	public static void main(String[] args) {
 		
-		example();
+		//example();
 		//exampleSwitchCase();
+		callListMethods();
 		
 	}
-	
+
 	private static void example() {
 		Scanner input = new Scanner(System.in);
 		int number = 0;
@@ -95,6 +97,20 @@ public class Excercises {
 		
 		input.close();
 		System.out.println("Il numero inserito è " + result);
+		
+	}
+	
+	private static void callListMethods() {
+		EserciziService service = new EserciziService();
+		//service.stampaLista();
+		//service.stampaListaUtils();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Inserire il nome della stagione in inglsse: ");
+		String season = input.next();
+		service.stampaListaModificata(season);
+		
+		input.close();
+		
 		
 	}
 }

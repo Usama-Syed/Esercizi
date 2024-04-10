@@ -1,10 +1,10 @@
-package com.github.training.excercises.service;
+package com.github.training.excercises.bean;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ListsService {
+public class StringListBean {
 	
 	private static List<String> myList;
 	
@@ -24,12 +24,12 @@ public class ListsService {
 		if (myList == null) {
 			createList();
 		}
-		
+
 		myList.add(value);
 	}
 	
-	public static void getValue(int index) {
-		myList.get(index);
+	public static String getValue(int index) {
+		return myList.get(index);
 	}
 	
 	public static void removeValue(int index) {
