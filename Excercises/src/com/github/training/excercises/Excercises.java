@@ -1,5 +1,7 @@
 package com.github.training.excercises;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.github.training.excercises.bean.Dog;
@@ -11,8 +13,8 @@ public class Excercises {
 		
 		//example();
 		//exampleSwitchCase();
-		callListMethods();
-		
+		//callListMethods();
+		esercizioA();
 	}
 
 	private static void example() {
@@ -113,4 +115,54 @@ public class Excercises {
 		
 		
 	}
+
+	/*
+	 * 1)Prendere in input una lista di valori interi positivi fino a quando l'utente digita 0; 
+	 * 2)Verificare che ogni valore sia un numero positivo, bloccare l'esecuzione in caso contrario e stampare "Non sono ammessi valori negativi"; 
+	 * 3)Contare per ogni valore il numero di occorrenze nella lista
+	 */
+	
+	private static void esercizioA() {
+		
+		
+		Scanner scan = new Scanner(System.in);
+		int count = 0;
+		List<Integer> values = new ArrayList<Integer>();
+		
+		System.out.println("Inserire una serie di numeri, digitare 0 per terminare: ");
+		int value = scan.nextInt();
+		
+		while(value != 0) {
+			if(value > 0) {
+				values.add(value);
+				value = scan.nextInt();
+			} else {
+				System.out.println("Non sono ammessi valori negativi");
+				break;
+			}
+			
+			
+		}
+		
+		for(int i=0; i<values.size(); i++) {
+			
+			for(int j=0; j<values.size(); j++ ) {
+				
+				if(values.get(i) == values.get(j)) {
+					
+					count++;
+					
+				} 
+				
+			}
+			System.out.println("Ci sono in totale " + count + " occorrenze del valore " + values.get(i) + " nella lista." );
+			count = 0;
+		}
+		
+		System.out.println("Fine programma ");
+	
+		
+	}
+
+	
 }
