@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.github.training.excercises.bean.StringListBean;
 
-public class EserciziService {
+public class EserciziListeService {
 	
 	/*
 	 * Creare una lista che contiene i nomi dei giorni della settimana e stamparla

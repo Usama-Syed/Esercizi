@@ -1,9 +1,13 @@
 package com.github.training.excercises;
 
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.github.training.excercises.bean.Dog;
-import com.github.training.excercises.service.EserciziService;
+import com.github.training.excercises.service.EserciziListeService;
+import com.github.training.excercises.service.EserciziMappeService;
+import com.github.training.excercises.service.EserciziSetService;
 
 public class Excercises {
 
@@ -11,10 +15,11 @@ public class Excercises {
 		
 		//example();
 		//exampleSwitchCase();
-		callListMethods();
-		
+		//callListMethods();
+		//callMapExcercises();
+		callSetExcercises();
 	}
-
+	
 	private static void example() {
 		Scanner input = new Scanner(System.in);
 		int number = 0;
@@ -101,7 +106,7 @@ public class Excercises {
 	}
 	
 	private static void callListMethods() {
-		EserciziService service = new EserciziService();
+		EserciziListeService service = new EserciziListeService();
 		//service.stampaLista();
 		//service.stampaListaUtils();
 		Scanner input = new Scanner(System.in);
@@ -110,7 +115,63 @@ public class Excercises {
 		service.stampaListaModificata(season);
 		
 		input.close();
+	}
+	
+
+	private static void callMapExcercises() {
+		EserciziMappeService maps = new EserciziMappeService();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Inserire il numero da trascodificare: ");
+		int num = input.nextInt();
+		String result;
 		
+		result = maps.getValue(num);
+		
+		System.out.println("Il valore corrispondente è " + result);
+		
+		maps.printMap();
+		input.close();
+	}
+	
+	private static void callSetExcercises() {
+		EserciziSetService service = new EserciziSetService();
+		Scanner input = new Scanner(System.in);
+		String result = "";
+		Integer[] array = new Integer[]{1, 5, 7, 1, 6, 8, 7 };
+		Set<Integer> values = service.generateSet(Arrays.asList(array));
+		System.out.println("Lunghezza array originale: " + array.length);
+		int oldSize = values.size();
+		System.out.println("Lunghezza set creato: " + oldSize);
+		
+		System.out.println("Lista Valori Nel Set Di Partenza");
+		for (Integer value : values) {
+			System.out.println(value);
+		}
+		
+		values.add(7);
+		values.add(2);
+		
+		System.out.println("Lunghezza set modificato: " + values.size());
+		System.out.println("Lunghezza set modificato attesa: " + (oldSize + 1));
+		
+		System.out.println("Lista Valori Nel Set Modificato");
+		for (Integer value : values) {
+			System.out.println(value);
+		}
+		
+		System.out.println("Digitare il valore di cui controllare la presenza nel set ");
+		int number = input.nextInt();
+		boolean esito = service.isContained(values, number);
+		if (!esito) {
+			result = "non";
+		}
+		System.out.println("Il valore " + number + " " + result + " è presente nel set");
+		
+		System.out.println("Digitare il valore della posizione da ricercare nel set ");
+		number = input.nextInt();
+		int element = service.getElement(values, number - 1);
+		System.out.println("Il valore corrispondente alla posizione " + number + " è " + element);
 		
 	}
+
 }
