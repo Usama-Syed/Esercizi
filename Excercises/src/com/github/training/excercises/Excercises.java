@@ -17,7 +17,8 @@ public class Excercises {
 		//exampleSwitchCase();
 		//callListMethods();
 		//callMapExcercises();
-		callSetExcercises();
+		//callSetExcercises();
+		handleExceptions();
 	}
 	
 	private static void example() {
@@ -188,5 +189,32 @@ public class Excercises {
 		
 		input.close();
 	}
+	
+	public static void handleExceptions() {
+		Integer[] numbers = new Integer[]{1, 5, 7, 8};
+		String result = null;
+		int number, value = 0; 
+		Dog myDog = null;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Inserire il numero della posizione da ricercare: ");
+		number = input.nextInt();
+		
+		try {
+			value = numbers[number-1];
+			myDog.equals(null);
+			result = "Il valore corrispondente alla posizione " + number + " è " + value;
+		} catch (ArrayIndexOutOfBoundsException aex) {
+			System.out.println("Error Message: " + aex.getMessage());
+			result = "La poszione non è presente nella lista, la lista contiene " + numbers.length + " elementi";
+		} catch (NullPointerException nex) {
+			result = "Il valore corrispondente alla posizione " + number + " è " + value;
+			System.out.println("Error Message: " + nex.getMessage());
+		}
+		
+		System.out.println(result);
+		
+		input.close();
+	}
+	
 
 }
