@@ -186,6 +186,7 @@ public class Excercises {
 		element = service.getElementIterator(values, number - 1);
 		System.out.println("Il valore corrispondente alla posizione " + number + " è " + element);
 		
+		input.close();
 	}
 
 }
