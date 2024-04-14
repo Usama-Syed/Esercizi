@@ -17,6 +17,7 @@ public class EserciziMappeService {
 		numbers.put(2, "DUE");
 		numbers.put(3, "TRE");
 		numbers.put(4, "QUATTRO");
+		
 		numbers.put(2, "CINQUE");
 		numbers.put(2, "SEI");
 		numbers.put(10, "ZZZZ");

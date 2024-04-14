@@ -172,6 +172,20 @@ public class Excercises {
 		int element = service.getElement(values, number - 1);
 		System.out.println("Il valore corrispondente alla posizione " + number + " è " + element);
 		
+		//Iterator part
+		service.removeElementIterator(values, 5);
+		System.out.println("Lunghezza set finale: " + values.size());
+		
+		System.out.println("Lista Valori Nel Set Finale");
+		for (Integer value : values) {
+			System.out.println(value);
+		}
+		
+		System.out.println("Digitare il nuovo valore della posizione da ricercare nel set ");
+		number = input.nextInt();
+		element = service.getElementIterator(values, number - 1);
+		System.out.println("Il valore corrispondente alla posizione " + number + " è " + element);
+		
 	}
 
 }
