@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import com.github.training.excercises.bean.Dog;
+import com.github.training.excercises.exception.MyProjectException;
 import com.github.training.excercises.service.EserciziListeService;
 import com.github.training.excercises.service.EserciziMappeService;
 import com.github.training.excercises.service.EserciziSetService;
@@ -18,7 +19,12 @@ public class Excercises {
 		//callListMethods();
 		//callMapExcercises();
 		//callSetExcercises();
-		handleExceptions();
+		//try {
+		//	handleExceptions();
+		//} catch (Exception e) {
+		//	System.out.println("An error occured.");
+		//}
+		handleCustomException();
 	}
 	
 	private static void example() {
@@ -190,7 +196,7 @@ public class Excercises {
 		input.close();
 	}
 	
-	public static void handleExceptions() {
+	public static void handleExceptions() throws Exception {
 		Integer[] numbers = new Integer[]{1, 5, 7, 8};
 		String result = null;
 		int number, value = 0; 
@@ -201,19 +207,74 @@ public class Excercises {
 		
 		try {
 			value = numbers[number-1];
-			myDog.equals(null);
+			//myDog.equals(null);
 			result = "Il valore corrispondente alla posizione " + number + " è " + value;
+			//throw new Exception();
 		} catch (ArrayIndexOutOfBoundsException aex) {
 			System.out.println("Error Message: " + aex.getMessage());
 			result = "La poszione non è presente nella lista, la lista contiene " + numbers.length + " elementi";
 		} catch (NullPointerException nex) {
 			result = "Il valore corrispondente alla posizione " + number + " è " + value;
 			System.out.println("Error Message: " + nex.getMessage());
+		} catch (Exception ex) {
+			throw ex;
+		} finally {
+			input.close();
+			System.out.println("Ho chiuso lo scanner");
+		}
+		
+		System.out.println(result);
+
+	}
+	
+	public static void handleCustomException() {
+		try {
+			handleCustomExceptionImpl();
+		} catch (MyProjectException mpex) {
+			System.out.println("Error message: " + mpex.getErrorMessage());
+			if (mpex.getCustomMessage() != null) {
+				System.out.println("Custom error message: " + mpex.getCustomMessage());
+			}
+		}
+
+	}
+	
+	private static void handleCustomExceptionImpl() throws MyProjectException {
+		Integer[] numbers = new Integer[]{1, 5, 7, 8};
+		String result = null;
+		int number, value = 0; 
+		Dog myDog = null;
+		Scanner input = new Scanner(System.in);
+		System.out.print("Inserire il numero della posizione da ricercare: ");
+		number = input.nextInt();
+		
+		try {
+			value = numbers[number-1];
+			//myDog.equals(null);
+			result = "Il valore corrispondente alla posizione " + number + " è " + value;
+			//throw new Exception("Errore generico");
+		} catch (ArrayIndexOutOfBoundsException aex) {
+			result = "La poszione non è presente nella lista, la lista contiene " + numbers.length + " elementi";
+			MyProjectException mpex = new MyProjectException();
+			mpex.setErrorMessage(aex.getMessage());
+			mpex.setCustomMessage(result);
+			throw mpex;
+		} catch (NullPointerException nex) {
+			result = "Il valore corrispondente alla posizione " + number + " è " + value;
+			MyProjectException mpex = new MyProjectException();
+			mpex.setErrorMessage(nex.getMessage());
+			throw mpex;
+		} catch (Exception ex) {
+			MyProjectException mpex = new MyProjectException();
+			mpex.setErrorMessage(ex.getMessage());
+			throw mpex;
+		} finally {
+			input.close();
+			System.out.println("Ho chiuso lo scanner");
 		}
 		
 		System.out.println(result);
 		
-		input.close();
 	}
 	
 
