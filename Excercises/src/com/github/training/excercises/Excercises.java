@@ -1,6 +1,7 @@
 package com.github.training.excercises;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +15,8 @@ public class Excercises {
 		//example();
 		//exampleSwitchCase();
 		//callListMethods();
-		esercizioA();
+//		esercizioA();
+		esercizioB();
 	}
 
 	private static void example() {
@@ -128,6 +130,7 @@ public class Excercises {
 		Scanner scan = new Scanner(System.in);
 		int count = 0;
 		List<Integer> values = new ArrayList<Integer>();
+		boolean isValid = true;
 		
 		System.out.println("Inserire una serie di numeri, digitare 0 per terminare: ");
 		int value = scan.nextInt();
@@ -138,31 +141,88 @@ public class Excercises {
 				value = scan.nextInt();
 			} else {
 				System.out.println("Non sono ammessi valori negativi");
+				isValid = false;
 				break;
 			}
 			
 			
 		}
 		
-		for(int i=0; i<values.size(); i++) {
-			
-			for(int j=0; j<values.size(); j++ ) {
+		if(isValid) {
+			for(int i=0; i<values.size(); i++) {
 				
-				if(values.get(i) == values.get(j)) {
+				for(int j=0; j<values.size(); j++ ) {
 					
-					count++;
+					if(values.get(i) == values.get(j)) {
+						
+						count++;
+						
+					} 
 					
-				} 
-				
+				}
+				System.out.println("Ci sono in totale " + count + " occorrenze del valore " + values.get(i) + " nella lista." );
+				count = 0;
 			}
-			System.out.println("Ci sono in totale " + count + " occorrenze del valore " + values.get(i) + " nella lista." );
-			count = 0;
 		}
+		
+		
 		
 		System.out.println("Fine programma ");
 	
 		
 	}
 
+	/*
+	 * Esercizio B: 
+	 * 1)Prendere in input una lista di stringhe fino a quando l'utente digita "END"; 
+	 * 2)Rimuovere tutti gli elementi duplicati del primo elemento dalla lista e stampare la lista risultante
+	 */
+	
+	private static void esercizioB() {
+
+		Scanner scan = new Scanner(System.in);
+		List<String> str = new ArrayList<String>();
+		
+
+		System.out.println("Inserire una serie di parole, digitare END per terminare l'inserimento ");
+		String word = scan.nextLine();
+		
+		while (!word.equalsIgnoreCase("END")) {
+
+			str.add(word);
+			word = scan.nextLine();
+		}
+
+		 Iterator<String> iterator = str.iterator();
+		 String element;
+		 String firstElement = str.get(0);
+		 boolean isFirstOccurence = true;
+		 
+		 while (iterator.hasNext()) {
+			 
+			 element = iterator.next();
+			 
+			 if (element != null && element.equals(firstElement)) {
+				if (!isFirstOccurence) {
+					 iterator.remove();
+				} else {
+					isFirstOccurence = false;
+				}
+				
+			 } else if (firstElement == null && element == null ) {
+				 if (!isFirstOccurence) {
+					 iterator.remove();
+				} else {
+					isFirstOccurence = false;
+				}
+			 }
+			 
+		 }
+		 
+		for(int i = 0; i<str.size();i++) {
+			System.out.println(str.get(i));
+		}
+
+	}
 	
 }
